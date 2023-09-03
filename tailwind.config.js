@@ -7,7 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
-
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+      },
+      aspectRatio: {
+        '3/2': '3 / 2',
+        '25/9': '25 / 9',
+      },
     },
   },
   plugins: [],

@@ -1,0 +1,94 @@
+.btn {
+  @apply relative inline-flex text-base font-medium px-4 py-3 rounded-md transition-all duration-150
+}
+
+/* begin::Colors */
+
+.primary.contained {
+  @apply bg-blue-700 text-white hover:bg-blue-600
+}
+
+.primary.outline {
+  @apply text-blue-700 border border-blue-700 bg-transparent hover:bg-blue-700 hover:text-white
+}
+
+.primary.contained_hover {
+  @apply bg-transparent hover:bg-blue-700 hover:text-white
+}
+
+.secondary.contained {
+  @apply bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white
+}
+
+.secondary.outline {
+  @apply text-zinc-800 border border-zinc-800 bg-transparent hover:bg-zinc-800 hover:text-white
+}
+
+.secondary.contained_hover {
+  @apply text-gray-400 bg-transparent hover:bg-zinc-800 hover:text-white
+}
+
+.danger.contained {
+  @apply bg-red-500 text-white hover:bg-red-400
+}
+
+.danger.outline {
+  @apply text-red-500 border border-red-500 bg-transparent hover:bg-red-500 hover:text-white
+}
+
+.danger.contained_hover {
+  @apply bg-transparent hover:bg-red-900/25 hover:text-red-500
+}
+
+
+/* end::Colors */
+
+/* begin::Sizes */
+
+.btn.sm {
+  @apply text-sm px-3 py-2.5 rounded-sm
+}
+
+.btn.base {
+  @apply text-base px-4 py-3 rounded-md
+}
+
+.btn.lg {
+  @apply text-lg px-4 py-3 rounded-lg
+}
+
+.btn.sm.sqaure {
+  @apply p-1.5
+}
+
+.btn.square,
+.btn.base.square {
+  @apply p-2
+}
+
+.btn.lg.square {
+  @apply p-3
+}
+
+.btn.full {
+  @apply w-full
+}
+
+/* end::Sizes */
+
+/* begin::Icon */
+
+.btn.btn_icon,
+.btn.btn_icon.base {
+  @apply items-center gap-3
+}
+
+.btn.btn_icon.sm {
+  @apply gap-2
+}
+
+.btn.btn_icon.lg {
+  @apply gap-3
+}
+
+/* end::Icon */

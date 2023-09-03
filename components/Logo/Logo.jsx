@@ -6,10 +6,10 @@ export default function Logo({ to }) {
     <>
       {to ? (
         <Link href="/">
-          <Image src="vercel.svg" width="283" height="64" />
+          <Image src="next.svg" width="283" height="64" alt="Logo" />
         </Link>
       ) : (
-        <Image src="vercel.svg" width="283" height="64" />
+        <Image src="next.svg" width="283" height="64" alt="Logo" />
       )}
     </>
   )
