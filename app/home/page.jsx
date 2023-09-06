@@ -1,11 +1,11 @@
-import { HeroSection, Card, CardSwiper } from '@/components'
+import { HeroSection } from '@/components'
+import Popular from './Sections/Popular'
 
 export default function page() {
   return (
     <>
       <HeroSection />
-
-      <CardSwiper />
+      <Popular />
     </>
   )
 }

@@ -1,3 +1,5 @@
+import { GalleryCard } from '@/components'
+
 async function getData() {
   const params = new URLSearchParams({ params: 'discover/movie' });
 
@@ -10,11 +12,15 @@ async function getData() {
   }
   return res.json()
 }
- 
+
 export default async function page() {
   const data = await getData();
+
   return (
      <div>
+      <GalleryCard>
+        {data.results.map((movie,k) => (movie.backdrop_path && k <=5 && <GalleryCard.Slide key={movie.id} background={movie.backdrop_path} />))}
+        </GalleryCard>
       {data.results.map((movie) => (
         <div key={movie.id}>
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
