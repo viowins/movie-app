@@ -14,6 +14,13 @@ module.exports = {
         '3/2': '3 / 2',
         '25/9': '25 / 9',
       },
+      gridTemplateRows: {
+        '0fr': '0fr',
+        '1fr': '1fr'
+      },
+      gridColumn: {
+        'swiper-layout': 'left-start / right-end'
+      }
     },
   },
   plugins: [],

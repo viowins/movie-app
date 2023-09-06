@@ -28,6 +28,18 @@
   @apply text-gray-400 bg-transparent hover:bg-zinc-800 hover:text-white
 }
 
+.white.contained {
+  @apply bg-white text-zinc-900
+}
+
+.white.outline {
+  @apply bg-white border border-white bg-transparent hover:bg-white hover:text-zinc-900
+}
+
+.white.contained_hover {
+  @apply bg-transparent hover:bg-white hover:text-zinc-900
+}
+
 .danger.contained {
   @apply bg-red-500 text-white hover:bg-red-400
 }

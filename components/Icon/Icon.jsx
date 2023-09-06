@@ -1,4 +1,5 @@
-import { BiHome, BiMovie, BiTv, BiBookmark, BiSearchAlt, BiPlay } from 'react-icons/bi'
+import { BiHome, BiMovie, BiTv, BiBookmark, BiSearchAlt, BiPlay, BiPlus } from 'react-icons/bi'
+import { AiFillStar } from 'react-icons/ai'
 
 export default function Icon({ size, name }) {
   return (
@@ -11,6 +12,8 @@ export default function Icon({ size, name }) {
           {name === "BookmarkOutline" && <BiBookmark size={size ? size : '24'} />}
           {name === "Search" && <BiSearchAlt size={size ? size : '24'} />}
           {name === "PlayFill" && <BiPlay size={size ? size : '24'} />}
+          {name === "StarFill" && <AiFillStar size={size ? size : '24'} />}
+          {name === "Plus" && <BiPlus size={size ? size : '24'} />}
         </>
       )}
     </>
