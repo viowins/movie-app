@@ -1,11 +1,9 @@
-import Sidebar from "./Sidebar/Sidebar";
-import Logo from "./Logo/Logo";
-import Layout from "./Layout/Layout";
-import Icon from "./Icon/Icon";
-import HeroSection from "./HeroSection/HeroSection";
-import Button from "./Button/Button";
-import Card from './Card/Card'
-import Swiper from "./Swiper/Swiper";
-import GalleryCard from "./GalleryCard/GalleryCard";
+import Sidebar from './Sidebar'
+import Layout from './Layout'
+import Logo from './Logo'
+import Icon from './Icon'
+import Avatar from './Avatar'
+import HeroSection from './HeroSection'
+import Button from './Button'
 
-export { Sidebar, Logo, Layout, Icon, HeroSection, Button, Card, Swiper,GalleryCard }
+export { Sidebar, Layout, Logo, Icon, Avatar, HeroSection, Button }
