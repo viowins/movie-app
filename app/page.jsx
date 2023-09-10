@@ -1,8 +1,5 @@
+import { HomeContainer } from "@/containers"
+
 export default function Home() {
-  
-  return (
-    <div>
-      home
-    </div>
-  )
+  return <HomeContainer />
 }

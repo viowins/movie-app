@@ -10,11 +10,11 @@ export default function Content({ movie = {} }) {
     },
     {
       label: 'Videos',
-      content: <div>Bu sekme Komponentler içeriğini gösterir.</div>,
+      content: <Tab.Overview movie={movie} />,
     },
     {
       label: 'Photos',
-      content: <div>Bu sekme State içeriğini gösterir.</div>,
+      content: <Tab.Overview movie={movie} />,
     },
   ])
 

@@ -13,9 +13,7 @@ export default function Card({ title, movie = {}, ...props }) {
   return (
     <motion.div whileHover={{ scale: 1.05 }} className='group relative transition-all duration-200 hover:shadow-2xl hover:z-[999]' onMouseEnter={() => setShowCardBody(true)}
       onMouseLeave={() => setShowCardBody(false)} {...props}>
-      <div className="relative">
-        <Poster className='object-cover aspect-poster rounded-lg transition-all duration-200 delay-200 group-hover:rounded-b-none' path={movie.poster_path} alt={movieName} />
-      </div>
+      <Poster className='object-cover aspect-poster rounded-lg transition-all duration-200 delay-200 group-hover:rounded-b-none' to={`${media_type}/${id}`} path={movie.poster_path} alt={movieName} />
 
       <div className={cn("absolute top-full grid transition-all duration-150 delay-200", showCardBody ? 'grid-rows-1fr' : 'grid-rows-0fr')}>
         <div className='overflow-hidden rounded-b-lg'>

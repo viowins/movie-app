@@ -2,7 +2,7 @@ import Link from "next/link"
 import cn from 'classnames'
 import styles from './Button.module.css'
 
-export default function index({children, variant, color, href, size, width, rounded, startIcon, endIcon, className, ...porps}) {
+export default function index({children, variant, color, href, size, width, rounded, startIcon, endIcon, className, ...props}) {
   return (
     <>
       {href ? (
@@ -19,6 +19,7 @@ export default function index({children, variant, color, href, size, width, roun
             rounded ? `rounded-${rounded}` : 'rounded-md',
             className && className
           )}
+          {...props}
         >
           {startIcon && startIcon}
           {children}
@@ -38,6 +39,7 @@ export default function index({children, variant, color, href, size, width, roun
           rounded ? `rounded-${rounded}` : 'rounded-md',
           className && className
         )}
+        {...props}
         >
         {startIcon && startIcon}
         {children}

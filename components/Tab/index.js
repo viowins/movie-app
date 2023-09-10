@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
-import { Poster } from '@/components'
+import { Button, Poster } from '@/components'
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Tab({ tabs }) {
   const [activeTab, setActiveTab] = useState(0);
@@ -9,27 +10,39 @@ export default function Tab({ tabs }) {
     setActiveTab(index);
   };
 
+
   return (
-    <div className='max-w-5xl w-full mx-auto'>
-      <div className="flex items-center justify-center gap-4">
+    <div className='relative max-w-5xl w-full mx-auto mt-6'>
+      <div className="flex items-center justify-center gap-4 mb-4">
         {tabs.map((tab, index) => (
-          <button
+          <Button
+            variant='contained'
+            color='blueHover'
+            rounded='full'
             key={index}
-            className={index === activeTab ? 'text-white' : 'text-zinc-500'}
+            className={index === activeTab ? 'bg-blue-950/50 text-blue-600' : 'text-zinc-500'}
             onClick={() => handleTabClick(index)}
           >
             {tab.label}
-          </button>
+          </Button>
         ))}
       </div>
-      <div className="tab-content">
-        {tabs[activeTab].content}
-      </div>
+      <AnimatePresence>
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, visibility: 'hidden', }}
+          animate={{ opacity: 1, visibility: 'visible' }}
+          exit={{ opacity: 0, visibility: 'hidden' }}
+          transition={{ duration: 0.2 }}
+         >
+          {tabs[activeTab].content}
+        </motion.div>
+      </AnimatePresence>
     </div>
   )
 }
 
-Tab.Overview = function({movie = {}}) {
+Tab.Overview = function ({ movie = {} }) {
   const { media_type, poster_path, original_title, original_name, overview } = movie
   const movieName = movie.media_type == 'movie' ? movie.original_title : movie.original_name
 

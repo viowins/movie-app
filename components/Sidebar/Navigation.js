@@ -5,8 +5,8 @@ export default function Navigation() {
     {
       name: 'Home',
       icon: 'HomeOutline',
-      path: '/home',
-      target: 'home'
+      path: '/',
+      target: null
     },
     {
       name: 'Movies',

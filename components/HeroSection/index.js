@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { Icon, Button } from '@/components'
+import { Icon, Button, Popup,Video } from '@/components'
 import cn from 'classnames'
 
 export default function HeroSection({ movie = {} }) {
@@ -9,18 +9,18 @@ export default function HeroSection({ movie = {} }) {
   const minutes = movie.runtime % 60;  
   const movieDate = movie.media_type == 'movie' ? movie.release_date.slice(0, 4) : movie.first_air_date.slice(0, 4)
   const movieName = movie.media_type == 'movie' ? movie.original_title : movie.original_name
-  const [movieRate, setMovieRate] = useState([])
-  
+  const [movieRate, setMovieRate] = useState([]);
+
+  const [video, setVideo] = useState(false);
+
   useEffect(() => {
     const Arr = []
-    console.log(movie.vote_average > 4)
     for (let i = 1; i < 6; i++) {
       let vote = (movie.vote_average / 2).toFixed(1)
       if (vote > i) {
         Arr.push({name: 'StarFill'})
       }
       else if (vote < i && vote > i - 1) {
-        console.log('half')
         Arr.push({name: 'StarHalf'})
       }
       else {
@@ -38,8 +38,8 @@ export default function HeroSection({ movie = {} }) {
         <div className="text-zinc-400 text-sm py-2 flex gap-3 items-center">
           <div className='inline-flex items-center gap-1'>
             <span className='inline-flex items-center gap-1 text-yellow-600'>
-              {movieRate.map((item) => (
-                <Icon name={item.name} />
+              {movieRate.map((item, key) => (
+                <Icon name={item.name} key={key} />
               ))}
             </span>
           </div>
@@ -53,8 +53,13 @@ export default function HeroSection({ movie = {} }) {
           )}
         </div>
         <p className='text-zinc-300'>{movie.overview}</p>
-        <div className='mt-4'><Button href="#" variant='contained' color='secondary' startIcon={<Icon name='PlayFill' />}>Watch Trailer</Button></div>
+        <div className='mt-4'><Button onClick={()=>setVideo(true) } href="#" variant='contained' color='secondary' startIcon={<Icon name='PlayFill' />}>Watch Trailer</Button></div>
       </div>
+      {(video &&
+      <Popup setVideo={setVideo} >
+        <Video  />
+      </Popup>
+      )}
     </div>
   )
 }

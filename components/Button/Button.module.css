@@ -13,7 +13,7 @@
 }
 
 .btn.blueHover.contained {
-  @apply hover:text-blue-700 hover:bg-blue-950/50
+  @apply hover:text-blue-600 hover:bg-blue-950/50
 }
 
 /* end:Colors */

@@ -1,4 +1,5 @@
 'use client'
+import React from 'react'
 import { Swiper, SwiperSlide  } from 'swiper/react'
 import 'swiper/css'
 import '@/styles/swiper.css'
@@ -15,9 +16,11 @@ export default function SwiperSection({title, movies = {}, index}) {
         slidesPerView={6}
         >
           {movies.map((movie, k) => (
-            <SwiperSlide>
-              <Card movie={movie} key={movie.id} />
-            </SwiperSlide>
+            <React.Fragment key={k}>
+              <SwiperSlide>
+                <Card movie={movie} key={movie.id} />
+              </SwiperSlide>
+            </React.Fragment>
           ))}
         </Swiper>
       </div>

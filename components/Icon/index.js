@@ -1,5 +1,6 @@
 import { BiHome, BiMovie, BiTv, BiBookmark, BiSearchAlt, BiPlay, BiPlus } from 'react-icons/bi'
 import { BsChevronRight, BsChevronLeft, BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs'
+import { CgClose } from 'react-icons/cg'
 
 export default function Icon({ size, name, ...props }) {
   return (
@@ -18,6 +19,8 @@ export default function Icon({ size, name, ...props }) {
           {name === "Plus" && <BiPlus size={size ? size : '24'} {...props}  />}
           {name === "ChevronRight" && <BsChevronRight size={size ? size : '24'} {...props} />}
           {name === "ChevronLeft" && <BsChevronLeft size={size ? size : '24'} {...props} />}
+          {name === "Close" && <CgClose size={size ? size : '24'} {...props} />}
+          
         </>
       )}
     </>
