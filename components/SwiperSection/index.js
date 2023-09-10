@@ -4,8 +4,19 @@ import { Swiper, SwiperSlide  } from 'swiper/react'
 import 'swiper/css'
 import '@/styles/swiper.css'
 import { Card } from '@/components'
+import { useEffect, useState } from 'react'
+import { getDetail } from '@/services/hooks'
 
-export default function SwiperSection({title, movies = {}, index}) {
+export default function SwiperSection({title, index}) {
+  const [movies, setMovies] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getDetail();
+      setMovies(data.results);
+    };
+    fetchData();
+   
+  }, []);
 
   return (
     <div className='relative flex flex-col gap-5 mt-8' style={{zIndex: index && index}}>

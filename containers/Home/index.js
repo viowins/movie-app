@@ -1,27 +1,16 @@
 import { HeroSection, SwiperSection } from '@/components'
-
-
-const getPopularMovies = async () => {
-  const res = await fetch(`${process.env.APP_URL}/api/moviedb`)
-
-  if (res.success === false) {
-    throw Error('Response error!')
-  }
-
-  return res.json();
-}
+import { getPopular } from '@/services/hooks'
 
 export default async function HomeContainer() {
-  const movies = await getPopularMovies()
+  const data = await getPopular();
 
-
+  if (data.success === false) {
+    notFound();
+  }
   return (
     <>
-    <HeroSection movie={movies.results[0]} />
-    <SwiperSection title='Populars' movies={movies.results.slice(1, 10)} index="499" />
-    <SwiperSection title='Populars' movies={movies.results.slice(10, 20)} index="498" />
-    <SwiperSection title='Populars' movies={movies.results.slice(15, 25)} index='497' />
-   
+    <HeroSection movie={data.results[0]} />
+    {Array(10).fill().map((_,index) => <SwiperSection title='Populars' movies={data.results} key={index} page={++index} index={500-index} />)}
     </>
   )
 }

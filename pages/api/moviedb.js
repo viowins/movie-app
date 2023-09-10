@@ -13,10 +13,10 @@ const getMovies =(params)=>{
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: `Bearer ${process.env.API_KEY}`
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`
     }
   };
- return fetch(`${process.env.MOVIE_DB_URL}/${params}`, options)
+ return fetch(`${process.env.NEXT_PUBLIC_MOVIE_DB_URL}/${params}`, options)
   .then(response => response.json())
   .then(json => json)
   .catch(err => err);

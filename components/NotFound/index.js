@@ -7,7 +7,7 @@ export default function NotFound({ children, title }) {
       {children && (
         <p className="text-zinc-400 mb-6">{children}</p>
       )}
-      <Button href='/home' variant='contained' color='secondary'>Go Home</Button>
+      <Button href='/' variant='contained' color='secondary'>Go Home</Button>
     </div>
   )
 }

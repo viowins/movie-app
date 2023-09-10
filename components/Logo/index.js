@@ -6,10 +6,10 @@ export default function Logo({linked}) {
     <>
       {linked ? (
         <Link href='/'>
-          <Image src='/filmly.svg' width='56' height='56' loading='lazy' />
+          <Image src='/filmly.svg' width='56' height='56' loading='lazy' alt="Logo" />
         </Link>
       ) : (
-        <Image src='/filmly.svg' width='56' height='56' loading='lazy' />
+        <Image src='/filmly.svg' width='56' height='56' loading='lazy' alt="Logo" />
       )}
     </>
   )

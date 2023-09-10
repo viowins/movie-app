@@ -1,10 +1,10 @@
 import { HeroSection } from "@/components"
 import Content from "./Content";;
 
-export default function MovieContainer({ movie = {} }) {
+export default function MovieContainer({ movie = {}, type }) {
   return (
     <>
-      <HeroSection movie={movie} />
+      <HeroSection type={type} movie={movie} />
       <Content movie={movie} />
     </>
   )
