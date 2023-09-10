@@ -8,12 +8,25 @@
   @apply bg-zinc-600 text-zinc-200 hover:text-white hover:bg-zinc-700
 }
 
+.btn.whiteHover.contained {
+  @apply hover:bg-white hover:text-zinc-900
+}
+
+.btn.blueHover.contained {
+  @apply hover:text-blue-700 hover:bg-blue-950/50
+}
+
 /* end:Colors */
 
 /* begin:Sizes */
 
 .btn.base {
   @apply px-4 py-3
+}
+
+.btn.square,
+.btn.square.base {
+  @apply w-8 h-8 justify-center !p-0
 }
 
 /* end:Sizes */
