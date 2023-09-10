@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper {
+  @apply max-w-full
+}
+
+.swiper,
+.swiper-container,
+.swiper-slide {
+  @apply !overflow-visible
+}
