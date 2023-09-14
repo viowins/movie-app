@@ -1,13 +1,15 @@
 import { HeroSection, Tab } from "@/components"
 import OverviewTab from "@/components/Tab/OverviewTab";
 import VideosTab from "@/components/Tab/VideosTab";
-import { getMeidaVideos, getMediaRelaseDate, getMediaDirector } from "@/services/movie"
+import PhotoTab from "@/components/Tab/PhotoTab"
+import { getMeidaVideos, getMediaRelaseDate, getMediaDirector, getMediaPhotos } from "@/services/movie"
 
 export default async function MovieContainer({ movie = {}, params }) {
-  const [{ results: video }, { results: release_dates }, {crew: director}] = await Promise.all([
+  const [{ results: video }, { results: release_dates }, {crew: director}, photos] = await Promise.all([
     getMeidaVideos(params.slug, params.id),
     getMediaRelaseDate(params.slug, params.id),
-    getMediaDirector(params.slug, params.id)
+    getMediaDirector(params.slug, params.id),
+    getMediaPhotos(params.slug, params.id)
   ])
 
   const trailer = video.find(({ type }) => type === "Trailer");
@@ -26,7 +28,7 @@ export default async function MovieContainer({ movie = {}, params }) {
     },
     {
       label: 'Photos',
-      content: <div>Photos</div>
+      content: <PhotoTab photos={photos} />
     },
   ]
 

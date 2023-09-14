@@ -1,18 +1,39 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+import cn from 'classnames'
 
-export default function Backdrop({ path, to, alt, ...props }) {
+export default function Backdrop({ path, to, alt, aspect, ...props }) {
   return (
     <>
       {to ? (
-        <Link className='block relative aspect-poster' href={to}>
-          <Image src={path ? `https://image.tmdb.org/t/p/original${path}` : 'https://placehold.co/600x400'} fill alt={alt} {...props} />
+        <Link className={cn("block relative", aspect ? `aspect-${aspect}` : 'aspect-poster')} href={to}>
+          <Image
+            src={
+              path
+                ? `https://image.tmdb.org/t/p/original${path}`
+                : "https://placehold.co/600x400"
+            }
+            fill={true}
+            alt={alt}
+            objectFit="cover"
+            {...props}
+          />
         </Link>
       ) : (
-        <div className='block relative aspect-poster'>
-        <Image src={path ? `https://image.tmdb.org/t/p/original${path}` : 'https://placehold.co/600x400'} fill alt={alt} {...props} />
+        <div className={cn("block relative", aspect ? `aspect-${aspect}` : 'aspect-poster')}>
+          <Image
+            src={
+              path
+                ? `https://image.tmdb.org/t/p/original${path}`
+                : "https://placehold.co/600x400"
+            }
+            fill={true}
+            alt={alt}
+            objectFit="cover"
+            {...props}
+          />
         </div>
       )}
     </>
-  )
+  );
 }

@@ -1,20 +1,17 @@
 'use client'
-import React, { useState } from 'react'
-import { Button, Icon, TrailerWatch } from '@/components'
+import React from 'react'
+import { Button, Icon } from '@/components'
+import useModal from '@/hooks/modal'
 
 export default function watchTrailer({ video = {} }) {
-  const [showModal, setShowModal] = useState(false)
-
-  const modalDisplayHandle = () => {
-    setShowModal((showModal) => !showModal)
-  }
+  const { Modal, openModal } = useModal(video.key)
 
   return (
     <>
       <div className='mt-4 z-50'>
-        <Button onClick={modalDisplayHandle} variant='contained' color='secondary' startIcon={<Icon name='PlayFill' />}>Watch Trailer</Button>
+        <Button onClick={openModal} variant='contained' color='secondary' startIcon={<Icon name='PlayFill' />}>Watch Trailer</Button>
       </div>
-      <TrailerWatch showModal={showModal} setShowModal={setShowModal} modalHandle={modalDisplayHandle} key={video.key} />
+      <Modal />
     </>
   )
 }
