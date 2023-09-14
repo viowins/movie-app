@@ -13,7 +13,23 @@ export default function SwiperSection({title, movies = {}, index}) {
 
       <div className='min-w-full'>
         <Swiper spaceBetween={24}
-        slidesPerView={6}
+        breakpoints={{
+          0: {
+            slidesPerView: 2,
+          },
+          640: {
+            slidesPerView: 3,
+          },
+          768: {
+            slidesPerView: 4,
+          },
+          1024: {
+            slidesPerView: 5,
+          },
+          1280: {
+            slidesPerView: 6,
+          }
+        }}
         >
           {movies.map((movie, k) => (
             <React.Fragment key={k}>

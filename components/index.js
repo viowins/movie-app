@@ -9,7 +9,7 @@ import SwiperSection from './SwiperSection'
 import NotFound from './NotFound'
 import Poster from './Poster'
 import Tab from './Tab'
-import Popup from './Popup'
-import Video from './Popup/Video'
+import MediaCard from './MediaCard'
+import TrailerWatch from './TrailerWatch'
 
-export { Sidebar, Layout, Logo, Icon, HeroSection, Button, Card, SwiperSection, NotFound, Poster, Tab, Popup, Video }
+export { Sidebar, Layout, Logo, Icon, HeroSection, Button, Card, SwiperSection, NotFound, Poster, Tab, MediaCard, TrailerWatch }
