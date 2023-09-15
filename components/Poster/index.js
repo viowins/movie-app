@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import cn from 'classnames'
+import cn from 'classnames';
 
 export default function Backdrop({ path, to, alt, aspect, ...props }) {
+
   return (
     <>
       {to ? (
@@ -16,6 +17,7 @@ export default function Backdrop({ path, to, alt, aspect, ...props }) {
             fill={true}
             alt={alt}
             objectFit="cover"
+            loading = 'lazy'
             {...props}
           />
         </Link>
@@ -30,6 +32,7 @@ export default function Backdrop({ path, to, alt, aspect, ...props }) {
             fill={true}
             alt={alt}
             objectFit="cover"
+            loading = 'lazy'
             {...props}
           />
         </div>

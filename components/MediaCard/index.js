@@ -24,6 +24,7 @@ export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
             <>
               <Image
                 src={`http://img.youtube.com/vi/${media.key}/0.jpg`}
+                objectFit="cover"
                 fill
               />
               <button
