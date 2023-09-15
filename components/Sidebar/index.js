@@ -1,4 +1,4 @@
-import { Logo, Avatar } from '@/components'
+import { Logo } from '@/components'
 import Navigation from './Navigation'
 
 export default function Sidebar() {
@@ -9,8 +9,6 @@ export default function Sidebar() {
           <Logo linked />
           <Navigation />
         </div>
-
-        <Avatar />
       </div>
     </div>
   )

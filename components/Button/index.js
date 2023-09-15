@@ -2,7 +2,7 @@ import Link from "next/link"
 import cn from 'classnames'
 import styles from './Button.module.css'
 
-export default function index({children, variant, color, href, size, width, rounded, startIcon, endIcon, className, ...porps}) {
+export default function index({children, variant, color, href, size, width, rounded, startIcon, endIcon, className, ...props}) {
   return (
     <>
       {href ? (
@@ -14,11 +14,14 @@ export default function index({children, variant, color, href, size, width, roun
             variant == 'contained' && styles.contained,
             color == 'secondary' && styles.secondary,
             color == 'blueHover' && styles.blueHover,
+            color == 'blue' && styles.blue,
             width == 'square' && styles.square,
             startIcon && endIcon ? styles.withIcon : '', 
             rounded ? `rounded-${rounded}` : 'rounded-md',
+            size == 'sm' && styles.sm,
             className && className
           )}
+          {...props}
         >
           {startIcon && startIcon}
           {children}
@@ -33,11 +36,14 @@ export default function index({children, variant, color, href, size, width, roun
           color == 'secondary' && styles.secondary,
           color == 'whiteHover' && styles.whiteHover,
           color == 'blueHover' && styles.blueHover,
+          color == 'blue' && styles.blue,
           width == 'square' && styles.square,
           startIcon && endIcon ? styles.withIcon : '', 
           rounded ? `rounded-${rounded}` : 'rounded-md',
+          size == 'sm' && styles.sm,
           className && className
         )}
+        {...props}
         >
         {startIcon && startIcon}
         {children}

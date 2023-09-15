@@ -1,4 +1,5 @@
 'use client'
+import React from 'react'
 import { Swiper, SwiperSlide  } from 'swiper/react'
 import 'swiper/css'
 import '@/styles/swiper.css'
@@ -12,12 +13,30 @@ export default function SwiperSection({title, movies = {}, index}) {
 
       <div className='min-w-full'>
         <Swiper spaceBetween={24}
-        slidesPerView={6}
+        breakpoints={{
+          0: {
+            slidesPerView: 2,
+          },
+          640: {
+            slidesPerView: 3,
+          },
+          768: {
+            slidesPerView: 4,
+          },
+          1024: {
+            slidesPerView: 5,
+          },
+          1280: {
+            slidesPerView: 6,
+          }
+        }}
         >
           {movies.map((movie, k) => (
-            <SwiperSlide>
-              <Card movie={movie} key={movie.id} />
-            </SwiperSlide>
+            <React.Fragment key={k}>
+              <SwiperSlide>
+                <Card movie={movie} key={movie.id} />
+              </SwiperSlide>
+            </React.Fragment>
           ))}
         </Swiper>
       </div>

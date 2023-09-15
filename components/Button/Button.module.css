@@ -13,7 +13,11 @@
 }
 
 .btn.blueHover.contained {
-  @apply hover:text-blue-700 hover:bg-blue-950/50
+  @apply hover:text-blue-600 hover:bg-blue-950/50
+}
+
+.btn.blue.contained {
+  @apply text-blue-600 bg-blue-950/50 hover:bg-blue-950/70
 }
 
 /* end:Colors */
@@ -27,6 +31,10 @@
 .btn.square,
 .btn.square.base {
   @apply w-8 h-8 justify-center !p-0
+}
+
+.btn.sm {
+  @apply px-1 py-0.5
 }
 
 /* end:Sizes */
