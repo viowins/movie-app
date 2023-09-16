@@ -1,0 +1,23 @@
+.tab {
+  @apply relative mt-6
+}
+
+.tab .tabButtons {
+  @apply flex items-center justify-center gap-4 mb-4
+}
+
+.tab .overviewTab {
+  @apply grid grid-cols-1 lg:grid-cols-[320px_auto] max-w-5xl w-full mx-auto gap-6 items-center
+}
+
+.tab .overviewTab .overviewDetails {
+  @apply grid grid-cols-[100px_auto] gap-2 mb-3
+}
+
+.tab .overviewTab .overviewDetails .label {
+  @apply text-zinc-300
+}
+
+.tab .overviewTab .overviewDetails .content {
+  @apply text-zinc-400 text-sm
+}

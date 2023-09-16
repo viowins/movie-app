@@ -1,96 +1,205 @@
-import React from 'react'
-import { Poster, Button } from '@/components'
+import React from "react";
+import { Poster, Button } from "@/components";
+import styles from './Tab.module.css'
 
-export default function OverviewTab({ movie = {}, release_date, director = {} }) {
-  const arrayToStringHandle = (array) => {
-    let result = ''
-    array.map((item, key) => {
-      if (key < 1) {
-      result += item.name
-      } else {
-        result += ', ' + item.name
-      }
-    })
-    return result
-  }
+const arrayToStringHandle = (array) => {
+  let result = "";
+  array.map((item, key) => {
+    if (key < 1) {
+      result += item.name;
+    } else {
+      result += ", " + item.name;
+    }
+  });
+  return result;
+};
 
+export default function OverviewTab({ media, children }) {
+  return (
+    <div className={styles.overviewTab}>
+      <Poster
+        path={media.poster_path}
+        alt={media.original_title ? media.original_title : media.original_name}
+      />
+      <div className="flex flex-col">
+        <h2 className="text-4xl text-white font-semibold mb-4">Storyline</h2>
+        <p className="text-lg text-zinc-400 mb-6">{media.overview}</p>
+        <div className="columns-1 sm:columns-2 gap-4">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+OverviewTab.Movie = function ({ movie = {}, release_date, director = {} }) {
   const movieDetails = [
     {
-      label: 'Released',
-      value: release_date.slice(0, 10),
+      label: "Released",
+      value: release_date,
     },
     {
-      label: 'Director',
+      label: "Director",
       value: director,
     },
     {
-      label: 'Budget',
-      value: movie.budget.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
+      label: "Budget",
+      value: movie.budget.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
         minimumFractionDigits: 2,
       }),
     },
     {
-      label: 'Status',
+      label: "Status",
       value: movie.status,
     },
     {
-      label: 'Runtime',
+      label: "Runtime",
       value: `${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}min`,
     },
     {
-      label: 'Revenue',
-      value: movie.revenue.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
+      label: "Revenue",
+      value: movie.revenue.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
         minimumFractionDigits: 2,
       }),
     },
     {
-      label: 'Language',
+      label: "Language",
       value: arrayToStringHandle(movie.spoken_languages),
     },
     {
-      label: 'Cateogries',
+      label: "Cateogries",
       value: movie.genres,
     },
     {
-      label: 'Productions',
+      label: "Productions",
       value: arrayToStringHandle(movie.production_companies),
     },
-  ]
+  ];
 
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-[320px_auto] max-w-5xl w-full mx-auto gap-6 items-center'>
-      <Poster path={movie.poster_path} alt={movie.original_title ? movie.original_title : movie.original_name} />
-      <div className='flex flex-col'>
-        <h2 className='text-4xl text-white font-semibold mb-4'>Storyline</h2>
-        <p className='text-lg text-zinc-400 mb-6'>{movie.overview}</p>
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-          {movieDetails.map((detail, k) => (
-            <div className='grid grid-cols-[100px_auto] gap-2 items-center' key={k}>
-              <div className='text-zinc-300'>{detail.label}</div>
-              <div className='text-zinc-400 text-sm'>
-                {detail.label == 'Director' || detail.label == 'Cateogries' ? (
-                  <>
-                    {detail.label == 'Director' && (<Button variant='contained' color='blue' size='sm' rounded href='#'>{detail.value.name}</Button>)}
-                    {detail.label == 'Cateogries' && (
-                      <div className='flex items-center gap-1'>
-                      {detail.value.map((item, k) => (
-                        <Button variant='contained' color='blue' size='sm' rounded href='#' key={k}>{item.name}</Button>
-                      ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <>{detail.value}</>
+    <>
+      {movieDetails.map((detail, k) => (
+        <div className={styles.overviewDetails} key={k}>
+          <div className={styles.label}>{detail.label}</div>
+          <div className={styles.content}>
+            {detail.label == "Director" || detail.label == "Cateogries" ? (
+              <>
+                {detail.label == "Director" && (
+                  <Button
+                    variant="contained"
+                    color="blue"
+                    size="sm"
+                    rounded
+                    href="#"
+                  >
+                    {detail.value.name}
+                  </Button>
                 )}
-              </div>
-            </div>
-          ))}
+                {detail.label == "Cateogries" && (
+                  <div className="flex items-center flex-wrap gap-1">
+                    {detail.value.map((item, k) => (
+                      <Button
+                        variant="contained"
+                        color="blue"
+                        size="sm"
+                        rounded
+                        href="#"
+                        key={k}
+                      >
+                        {item.name}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (
+              <>{detail.value}</>
+            )}
+          </div>
         </div>
-      </div>
-    </div>
-  )
-}
+      ))}
+    </>
+  );
+};
+
+OverviewTab.Tv = function ({ tv = {} }) {
+  const tvDetails = [
+    {
+      label: "Released",
+      value: tv.first_air_date,
+    },
+    {
+      label: "Director",
+      value: tv.created_by[0].name,
+    },
+    {
+      label: "Seasons",
+      value: tv.seasons[0].season_number,
+    },
+    {
+      label: "Status",
+      value: tv.status,
+    },
+    {
+      label: "Language",
+      value: arrayToStringHandle(tv.spoken_languages),
+    },
+    {
+      label: "Cateogries",
+      value: tv.genres,
+    },
+    {
+      label: "Productions",
+      value: arrayToStringHandle(tv.production_companies),
+    },
+  ];
+
+  return (
+    <>
+      {tvDetails.map((detail, k) => (
+        <div className={styles.overviewDetails} key={k}>
+          <div className={styles.label}>{detail.label}</div>
+            <div className={styles.content}>
+            {detail.label == "Director" || detail.label == "Cateogries" ? (
+              <>
+                {detail.label == "Director" && (
+                  <Button
+                    variant="contained"
+                    color="blue"
+                    size="sm"
+                    rounded
+                    href="#"
+                    className='text-center'
+                  >
+                    {detail.value}
+                  </Button>
+                )}
+                {detail.label == "Cateogries" && (
+                  <div className="flex items-center flex-wrap gap-1">
+                    {detail.value.map((item, k) => (
+                      <Button
+                        variant="contained"
+                        color="blue"
+                        size="sm"
+                        rounded
+                        href="#"
+                        key={k}
+                        className='text-center'
+                      >
+                        {item.name}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+              </>
+            ) : (
+              <>{detail.value}</>
+            )}
+          </div>
+        </div>
+      ))}
+    </>
+  );
+};

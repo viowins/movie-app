@@ -2,25 +2,15 @@ import { HeroSection, Tab } from "@/components"
 import OverviewTab from "@/components/Tab/OverviewTab";
 import VideosTab from "@/components/Tab/VideosTab";
 import PhotoTab from "@/components/Tab/PhotoTab"
-import { getMeidaVideos, getMediaRelaseDate, getMediaDirector, getMediaPhotos } from "@/services/movie"
 
-export default async function MovieContainer({ movie = {}, params }) {
-  const [{ results: video }, { results: release_dates }, {crew: director}, photos] = await Promise.all([
-    getMeidaVideos(params.slug, params.id),
-    getMediaRelaseDate(params.slug, params.id),
-    getMediaDirector(params.slug, params.id),
-    getMediaPhotos(params.slug, params.id)
-  ])
+export default async function MovieContainer2({ detail = {}, params }) {
 
-  const trailer = video.find(({ type }) => type === "Trailer");
-  const usReleaseDate = Object.values(release_dates).find(({ iso_3166_1 }) => iso_3166_1 === "US")
-  
-  const directorResult = director.find(({ job }) => job === "Director");
+  const { fetch, video, photos, usReleaseDate, directorResult, trailer } = detail
 
   const tabs = [
     {
       label: 'Overview',
-      content: <OverviewTab movie={movie} release_date={usReleaseDate.release_dates[0].release_date} director={directorResult} />
+      content: <OverviewTab media={fetch}> { params.slug == 'movie' ? <OverviewTab.Movie movie={fetch} release_date={usReleaseDate.release_dates[0].release_date} director={directorResult} /> : <OverviewTab.Tv tv={fetch} /> }</OverviewTab>
     },
     {
       label: 'Videos',
@@ -34,7 +24,7 @@ export default async function MovieContainer({ movie = {}, params }) {
 
   return (
     <>
-      <HeroSection movie={movie} video={trailer} />
+      <HeroSection movie={fetch} video={trailer} />
 
       <Tab tabs={tabs} />
     </>
