@@ -15,19 +15,19 @@ export default function SwiperSection({title, movies = {}, index}) {
         <Swiper spaceBetween={24}
         breakpoints={{
           0: {
-            slidesPerView: 2,
+            slidesPerView: 1,
           },
           640: {
-            slidesPerView: 3,
+            slidesPerView: 2,
           },
           768: {
-            slidesPerView: 4,
+            slidesPerView: 3,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 4,
           },
           1280: {
-            slidesPerView: 6,
+            slidesPerView: 5,
           }
         }}
         >
