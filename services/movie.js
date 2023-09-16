@@ -53,17 +53,6 @@ const getMediaDetail = async (params) => {
 
     return res
   }
-
-  //   //const usReleaseDate = Object.values(release_dates).find(({ iso_3166_1 }) => iso_3166_1 === "US");
-  // }
-
-  // if (director) {
-  //   const directorResult = director.find(({ job }) => job === "Director");
-  // }
-
-  // if (mediaVideos) {
-  //   const trailer = video.find(({ type }) => type === "Trailer");
-  // }
 };
 
 const getMeidaVideos = async (media_type, id) => {
