@@ -35,7 +35,7 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className='flex flex-col gap-4 items-center'>
+    <nav className='flex flex-nowrap md:flex-col gap-4 items-center'>
       {navigation.map((item, key) => (
         <NavLink to={item.path} iconName={item.icon} target={item.target} key={key} />
       ))}

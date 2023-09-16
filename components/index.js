@@ -12,6 +12,7 @@ import Tab from "./Tab";
 import MediaCard from "./MediaCard";
 import TrailerWatch from "./TrailerWatch";
 import Skeleton from "./Skeleton/Skeleton";
+import Footer from './Footer'
 
 export {
   Sidebar,
@@ -28,4 +29,5 @@ export {
   MediaCard,
   TrailerWatch,
   Skeleton,
+  Footer,
 };

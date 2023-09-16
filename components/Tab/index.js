@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { Button } from '@/components'
+import styles from './Tab.module.css'
 
 export default function Tab({ tabs = [] }) {
   const [activeTab, setActiveTab] = useState(0);
@@ -10,8 +11,8 @@ export default function Tab({ tabs = [] }) {
   };
 
   return (
-    <div className='relative mt-6'>
-      <div className="flex items-center justify-center gap-4 mb-4">
+    <div className={styles.tab}>
+      <div className={styles.tabButtons}>
       {tabs.map((tab, index) => (
           <Button
             variant='contained'

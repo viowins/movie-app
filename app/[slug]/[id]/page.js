@@ -3,9 +3,9 @@ import { notFound } from "next/navigation"
 import { getMediaDetail } from "@/services/movie"
 
 export default async function TvPage({ params, searchParams }) {
-  const mediaDetail = await getMediaDetail(params)
+  const res = await getMediaDetail(params)
 
-  if (!mediaDetail) {
+  if (!res) {
     notFound()
   }
 
@@ -15,7 +15,7 @@ export default async function TvPage({ params, searchParams }) {
 
   return (
     <>
-      <MovieContainer movie={mediaDetail} params={params} />
+      <MovieContainer detail={res} params={params} />
     </>
   )
 }

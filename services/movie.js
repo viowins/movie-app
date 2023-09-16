@@ -30,7 +30,29 @@ const getHeroMovie = async (media_type, id) => {
 const getMediaDetail = async (params) => {
   const path = `/${params.slug}/${params.id}`;
 
-  return fetchMediaApi(path, langEnQuery);
+  const [ fetch, { results: video }, { crew: director }, { results: release_dates }, photos ] = await Promise.all([
+    fetchMediaApi(path, langEnQuery),
+    getMeidaVideos(params.slug, params.id),
+    getMediaDirector(params.slug, params.id),
+    getMediaRelaseDate(params.slug, params.id),
+    getMediaPhotos(params.slug, params.id),
+  ])
+
+  const trailer = video.find(({ type }) => type === "Trailer");
+
+  if (params.slug == 'movie') {
+    const usReleaseDate = Object.values(release_dates).find(({ iso_3166_1 }) => iso_3166_1 === "US");
+    const directorResult = director.find(({ job }) => job === "Director");
+
+    const res = { fetch, video, director, photos, usReleaseDate, directorResult, trailer }
+    
+    return res
+
+  } else if (params.slug == 'tv') {
+    const res = { fetch, video, director, photos, trailer }
+
+    return res
+  }
 };
 
 const getMeidaVideos = async (media_type, id) => {
