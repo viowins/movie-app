@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import { Poster, Icon } from "@/components";
+import { Icon } from "@/components";
 import useModal from "@/hooks/modal";
 import Image from "next/image";
 import cn from "classnames";
+import Loading from "./loading";
 
 export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
   const { Modal, openModal } = useModal(media.key);
@@ -19,12 +20,22 @@ export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
           )}
         >
           {mediaType == "photo" ? (
-            <Poster path={media.file_path} alt={media.name} aspect={aspect} />
+            <Image
+              src={`https://image.tmdb.org/t/p/original${media.file_path}`}
+              fill={true}
+              alt={media.file_path}
+              loading="lazy"
+              sizes="500px"
+              onLoadingComplete={() => console.log('loading')}
+              style={{ objectFit: "cover" }}
+            />
           ) : (
             <>
               <Image
                 src={`http://img.youtube.com/vi/${media.key}/0.jpg`}
-                objectFit="cover"
+                sizes="500px"
+                style={{ objectFit: aspect ? aspect : "cover" }}
+                alt={media.name}
                 fill
               />
               <button
@@ -46,12 +57,10 @@ export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
             <h3 className="text-white">{media.name}</h3>
             <p className="text-zinc-400 text-sm">{media.type}</p>
           </div>
-      )}
+        )}
       </div>
 
-      {mediaType == "video" && (
-        <Modal />
-      )}
+      {mediaType == "video" && <Modal />}
     </>
   );
 }

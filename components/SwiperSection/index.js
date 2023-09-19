@@ -31,12 +31,10 @@ export default function SwiperSection({title, movies = {}, index}) {
           }
         }}
         >
-          {movies.map((movie, k) => (
-            <React.Fragment key={k}>
-              <SwiperSlide>
-                <Card movie={movie} key={movie.id} />
-              </SwiperSlide>
-            </React.Fragment>
+          {movies.map((movie) => (
+            <SwiperSlide key={movie.id}>
+              <Card movie={movie} />
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>

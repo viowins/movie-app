@@ -99,14 +99,14 @@ OverviewTab.Movie = function ({ movie = {}, release_date, director = {} }) {
                 )}
                 {detail.label == "Cateogries" && (
                   <div className="flex items-center flex-wrap gap-1">
-                    {detail.value.map((item, k) => (
+                    {detail.value.map((item, index) => (
                       <Button
                         variant="contained"
                         color="blue"
                         size="sm"
                         rounded
                         href="#"
-                        key={k}
+                        key={index}
                       >
                         {item.name}
                       </Button>
@@ -178,14 +178,14 @@ OverviewTab.Tv = function ({ tv = {} }) {
                 )}
                 {detail.label == "Cateogries" && (
                   <div className="flex items-center flex-wrap gap-1">
-                    {detail.value.map((item, k) => (
+                    {detail.value.map((item, index) => (
                       <Button
                         variant="contained"
                         color="blue"
                         size="sm"
                         rounded
                         href="#"
-                        key={k}
+                        key={index}
                         className='text-center'
                       >
                         {item.name}
