@@ -1,6 +1,7 @@
 import React from "react";
-import { Poster, Button } from "@/components";
-import styles from './Tab.module.css'
+import { Poster, Button, Icon } from "@/components";
+import styles from "./Tab.module.css";
+import useSocialLink from '@/hooks/socialLink'
 
 const arrayToStringHandle = (array) => {
   let result = "";
@@ -14,7 +15,11 @@ const arrayToStringHandle = (array) => {
   return result;
 };
 
-export default function OverviewTab({ media, children }) {
+export default function OverviewTab({ media, children, externalIDs }) {
+  const getExternalIcon = (socialID) => {
+    return socialID.replace(/_id/g, '') ? socialID.replace(/_id/g, '') : 'link'
+  };
+
   return (
     <div className={styles.overviewTab}>
       <Poster
@@ -25,6 +30,22 @@ export default function OverviewTab({ media, children }) {
         <h2 className="text-4xl text-white font-semibold mb-4">Storyline</h2>
         <p className="text-lg text-zinc-400 mb-6">{media.overview}</p>
         <div className="columns-1 sm:columns-2 gap-4">{children}</div>
+        <div className="flex items-center flex-wrap gap-2 mt-6">
+          {Object.keys(externalIDs).map((item, key) => (
+            <React.Fragment key={key}>
+              {item != "id" && externalIDs[item] != null && (
+                <Button
+                  href={`${useSocialLink(item)}${externalIDs[item]}`}
+                  variant="contained"
+                  color="blueHover"
+                  width="square"
+                  startIcon={<Icon name={getExternalIcon(item)} />}
+                  target="_blank"
+                />
+              )}
+            </React.Fragment>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -83,6 +104,7 @@ OverviewTab.Movie = function ({ movie = {}, release_date, director = {} }) {
       {movieDetails.map((detail, k) => (
         <div className={styles.overviewDetails} key={k}>
           <div className={styles.label}>{detail.label}</div>
+
           <div className={styles.content}>
             {detail.label == "Director" || detail.label == "Cateogries" ? (
               <>
@@ -99,14 +121,14 @@ OverviewTab.Movie = function ({ movie = {}, release_date, director = {} }) {
                 )}
                 {detail.label == "Cateogries" && (
                   <div className="flex items-center flex-wrap gap-1">
-                    {detail.value.map((item, k) => (
+                    {detail.value.map((item, index) => (
                       <Button
                         variant="contained"
                         color="blue"
                         size="sm"
                         rounded
                         href="#"
-                        key={k}
+                        key={index}
                       >
                         {item.name}
                       </Button>
@@ -132,7 +154,7 @@ OverviewTab.Tv = function ({ tv = {} }) {
     },
     {
       label: "Director",
-      value: tv.created_by[0].name,
+      value: tv.created_by[0].name ? tv.created_by[0].name : '',
     },
     {
       label: "Seasons",
@@ -161,7 +183,7 @@ OverviewTab.Tv = function ({ tv = {} }) {
       {tvDetails.map((detail, k) => (
         <div className={styles.overviewDetails} key={k}>
           <div className={styles.label}>{detail.label}</div>
-            <div className={styles.content}>
+          <div className={styles.content}>
             {detail.label == "Director" || detail.label == "Cateogries" ? (
               <>
                 {detail.label == "Director" && (
@@ -171,22 +193,22 @@ OverviewTab.Tv = function ({ tv = {} }) {
                     size="sm"
                     rounded
                     href="#"
-                    className='text-center'
+                    className="text-center"
                   >
                     {detail.value}
                   </Button>
                 )}
                 {detail.label == "Cateogries" && (
                   <div className="flex items-center flex-wrap gap-1">
-                    {detail.value.map((item, k) => (
+                    {detail.value.map((item, index) => (
                       <Button
                         variant="contained"
                         color="blue"
                         size="sm"
                         rounded
                         href="#"
-                        key={k}
-                        className='text-center'
+                        key={index}
+                        className="text-center"
                       >
                         {item.name}
                       </Button>

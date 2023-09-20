@@ -8,10 +8,10 @@ export default function Footer() {
       <div className='text-zinc-500'>
         Made by <Link className='text-white hover:underline' href='https://github.com/viowins/' target='_blank'>Emre Yaraşır</Link>
       </div>
-      <div>
+      <div className='flex items-center justify-center gap-2'>
         Made with 
         <Link href='https://www.themoviedb.org/' target='_blank'>
-          <Image href='/themoviedborglogo.svg' alt='The Movie Database' width={154} height={20} />
+          <Image src='/themoviedborglogo.svg' alt='The Movie Database' width={154} height={20} />
         </Link>
       </div>
     </footer>

@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { Poster, Icon } from "@/components";
+import { Icon } from "@/components";
 import useModal from "@/hooks/modal";
-import Image from "next/image";
+import { SkeletonImage } from "@/hooks/skeletonImage";
 import cn from "classnames";
 
 export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
@@ -18,15 +18,19 @@ export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
             aspect && `aspect-${aspect}`
           )}
         >
-          {mediaType == "photo" ? (
-            <Poster path={media.file_path} alt={media.name} aspect={aspect} />
-          ) : (
-            <>
-              <Image
-                src={`http://img.youtube.com/vi/${media.key}/0.jpg`}
-                objectFit="cover"
-                fill
-              />
+          <SkeletonImage 
+            src={
+              mediaType == "photo"
+                ? `https://image.tmdb.org/t/p/original${media.file_path}`
+                : `http://img.youtube.com/vi/${media.key}/0.jpg`
+            }
+            sizes="500px"
+            style={{ objectFit: "cover" }}
+            loading="lazy"
+            alt={mediaType == "photo" ? media.file_path : media.name}
+            fill={true}
+          />
+          {mediaType == "video" && (
               <button
                 className="group absolute inset-0 grid place-items-center"
                 onClick={openModal}
@@ -37,8 +41,7 @@ export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
                   </span>
                 </div>
               </button>
-            </>
-          )}
+            )}
         </div>
 
         {mediaType == "video" && (
@@ -46,12 +49,10 @@ export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
             <h3 className="text-white">{media.name}</h3>
             <p className="text-zinc-400 text-sm">{media.type}</p>
           </div>
-      )}
+        )}
       </div>
 
-      {mediaType == "video" && (
-        <Modal />
-      )}
+      {mediaType == "video" && <Modal />}
     </>
   );
 }

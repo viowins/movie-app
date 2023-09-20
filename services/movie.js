@@ -30,12 +30,14 @@ const getHeroMovie = async (media_type, id) => {
 const getMediaDetail = async (params) => {
   const path = `/${params.slug}/${params.id}`;
 
-  const [ fetch, { results: video }, { crew: director }, { results: release_dates }, photos ] = await Promise.all([
+  const [ fetch, { results: video }, { crew: director }, { results: release_dates }, photos, { cast: casts }, external_ids ] = await Promise.all([
     fetchMediaApi(path, langEnQuery),
     getMeidaVideos(params.slug, params.id),
     getMediaDirector(params.slug, params.id),
     getMediaRelaseDate(params.slug, params.id),
     getMediaPhotos(params.slug, params.id),
+    getMediaDirector(params.slug, params.id),
+    getExternalIDs(params.slug, params.id)
   ])
 
   const trailer = video.find(({ type }) => type === "Trailer");
@@ -44,12 +46,12 @@ const getMediaDetail = async (params) => {
     const usReleaseDate = Object.values(release_dates).find(({ iso_3166_1 }) => iso_3166_1 === "US");
     const directorResult = director.find(({ job }) => job === "Director");
 
-    const res = { fetch, video, director, photos, usReleaseDate, directorResult, trailer }
+    const res = { fetch, video, director, photos, usReleaseDate, directorResult, trailer, casts, external_ids }
     
     return res
 
   } else if (params.slug == 'tv') {
-    const res = { fetch, video, director, photos, trailer }
+    const res = { fetch, video, director, photos, trailer, casts, external_ids }
 
     return res
   }
@@ -77,6 +79,26 @@ const getMediaDirector = async (media_type, id) => {
   return fetchMediaApi(path, langEnQuery);
 };
 
+const getExternalIDs = async (media_type, id) => {
+  const path = `/${media_type}/${id}/external_ids`
+  return fetchMediaApi(path)
+}
+
+const getPerson = async (id) => {
+  const path = `/person/${id}`
+  return fetchMediaApi(path, langEnQuery)
+}
+
+const getPersonImages = async (id) => {
+  const path = `/person/${id}/images`
+  return fetchMediaApi(path)
+}
+
+const getPersonMedias = async (id) => {
+  const path = `/person/${id}/movie_credits`
+  return fetchMediaApi(path, langEnQuery)
+}
+
 export {
   fetchMediaApi,
   getTrendings,
@@ -86,4 +108,8 @@ export {
   getMediaRelaseDate,
   getMediaDirector,
   getMediaPhotos,
+  getExternalIDs,
+  getPerson,
+  getPersonImages,
+  getPersonMedias,
 };

@@ -12,7 +12,10 @@ import Tab from "./Tab";
 import MediaCard from "./MediaCard";
 import TrailerWatch from "./TrailerWatch";
 import Skeleton from "./Skeleton/Skeleton";
-import Footer from './Footer'
+import Footer from './Footer';
+import Casts from "./Casts";
+import PersonDetail from "./PersonDetail";
+import GridSection from "./GridSection";
 
 export {
   Sidebar,
@@ -30,4 +33,7 @@ export {
   TrailerWatch,
   Skeleton,
   Footer,
+  Casts,
+  PersonDetail,
+  GridSection,
 };
