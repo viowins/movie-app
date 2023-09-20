@@ -14,6 +14,8 @@ import TrailerWatch from "./TrailerWatch";
 import Skeleton from "./Skeleton/Skeleton";
 import Footer from './Footer';
 import Casts from "./Casts";
+import PersonDetail from "./PersonDetail";
+import GridSection from "./GridSection";
 
 export {
   Sidebar,
@@ -32,4 +34,6 @@ export {
   Skeleton,
   Footer,
   Casts,
+  PersonDetail,
+  GridSection,
 };

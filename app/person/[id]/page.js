@@ -1,7 +1,10 @@
 import { Person } from "@/containers"
+import { getPerson } from '@/services/movie'
 
-export default function PersonPage() {
+export default async function PersonPage({params}) {
+  const person = await getPerson(params.id)
+
   return (
-    <Person />
+    <Person person={person} />
   )
 }

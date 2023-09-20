@@ -2,7 +2,7 @@
 import React from "react";
 import { Icon } from "@/components";
 import useModal from "@/hooks/modal";
-import Image from "next/image";
+import { SkeletonImage } from "@/hooks/skeletonImage";
 import cn from "classnames";
 
 export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
@@ -18,25 +18,19 @@ export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
             aspect && `aspect-${aspect}`
           )}
         >
-          {mediaType == "photo" ? (
-            <Image
-              src={`https://image.tmdb.org/t/p/original${media.file_path}`}
-              fill={true}
-              alt={media.file_path}
-              loading="lazy"
-              sizes="500px"
-              onLoadingComplete={() => console.log('loading')}
-              style={{ objectFit: "cover" }}
-            />
-          ) : (
-            <>
-              <Image
-                src={`http://img.youtube.com/vi/${media.key}/0.jpg`}
-                sizes="500px"
-                style={{ objectFit: aspect ? aspect : "cover" }}
-                alt={media.name}
-                fill
-              />
+          <SkeletonImage 
+            src={
+              mediaType == "photo"
+                ? `https://image.tmdb.org/t/p/original${media.file_path}`
+                : `http://img.youtube.com/vi/${media.key}/0.jpg`
+            }
+            sizes="500px"
+            style={{ objectFit: "cover" }}
+            loading="lazy"
+            alt={mediaType == "photo" ? media.file_path : media.name}
+            fill={true}
+          />
+          {mediaType == "video" && (
               <button
                 className="group absolute inset-0 grid place-items-center"
                 onClick={openModal}
@@ -47,8 +41,7 @@ export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
                   </span>
                 </div>
               </button>
-            </>
-          )}
+            )}
         </div>
 
         {mediaType == "video" && (

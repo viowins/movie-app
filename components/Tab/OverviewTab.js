@@ -30,7 +30,7 @@ export default function OverviewTab({ media, children, externalIDs }) {
         <h2 className="text-4xl text-white font-semibold mb-4">Storyline</h2>
         <p className="text-lg text-zinc-400 mb-6">{media.overview}</p>
         <div className="columns-1 sm:columns-2 gap-4">{children}</div>
-        <div className="flex items-center flex-wrap gap-2">
+        <div className="flex items-center flex-wrap gap-2 mt-6">
           {Object.keys(externalIDs).map((item, key) => (
             <React.Fragment key={key}>
               {item != "id" && externalIDs[item] != null && (

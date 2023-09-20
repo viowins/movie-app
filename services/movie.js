@@ -84,6 +84,21 @@ const getExternalIDs = async (media_type, id) => {
   return fetchMediaApi(path)
 }
 
+const getPerson = async (id) => {
+  const path = `/person/${id}`
+  return fetchMediaApi(path, langEnQuery)
+}
+
+const getPersonImages = async (id) => {
+  const path = `/person/${id}/images`
+  return fetchMediaApi(path)
+}
+
+const getPersonMedias = async (id) => {
+  const path = `/person/${id}/movie_credits`
+  return fetchMediaApi(path, langEnQuery)
+}
+
 export {
   fetchMediaApi,
   getTrendings,
@@ -94,4 +109,7 @@ export {
   getMediaDirector,
   getMediaPhotos,
   getExternalIDs,
+  getPerson,
+  getPersonImages,
+  getPersonMedias,
 };
