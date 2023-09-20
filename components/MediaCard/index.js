@@ -4,7 +4,6 @@ import { Icon } from "@/components";
 import useModal from "@/hooks/modal";
 import Image from "next/image";
 import cn from "classnames";
-import Loading from "./loading";
 
 export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
   const { Modal, openModal } = useModal(media.key);

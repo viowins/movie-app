@@ -1,16 +1,16 @@
-import { HeroSection, Tab } from "@/components"
+import { HeroSection, Tab, Casts } from "@/components"
 import OverviewTab from "@/components/Tab/OverviewTab";
 import VideosTab from "@/components/Tab/VideosTab";
 import PhotoTab from "@/components/Tab/PhotoTab"
 
 export default async function MovieContainer2({ detail = {}, params }) {
 
-  const { fetch, video, photos, usReleaseDate, directorResult, trailer } = detail
-
+  const { fetch, video, photos, usReleaseDate, directorResult, trailer, casts, external_ids } = detail
+  
   const tabs = [
     {
       label: 'Overview',
-      content: <OverviewTab media={fetch}> { params.slug == 'movie' ? <OverviewTab.Movie movie={fetch} release_date={usReleaseDate.release_dates[0].release_date} director={directorResult} /> : <OverviewTab.Tv tv={fetch} /> }</OverviewTab>
+      content: <OverviewTab media={fetch} externalIDs={external_ids} > { params.slug == 'movie' ? <OverviewTab.Movie movie={fetch} release_date={usReleaseDate.release_dates[0].release_date} director={directorResult} /> : <OverviewTab.Tv tv={fetch}/> }</OverviewTab>
     },
     {
       label: 'Videos',
@@ -25,8 +25,8 @@ export default async function MovieContainer2({ detail = {}, params }) {
   return (
     <>
       <HeroSection movie={fetch} video={trailer} />
-
       <Tab tabs={tabs} />
+      <Casts casts={casts} />
     </>
   )
 }
