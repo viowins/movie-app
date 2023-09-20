@@ -39,14 +39,14 @@ export default function Casts({ casts }) {
             >
               <Link href={`/person/${item.id}`}>
                 {item.profile_path === null ? (
-                  <Poster path="dummy" alt={item.character} />
+                  <Poster path="dummy" alt={item.name} />
                 ) : (
-                  <Poster path={item.profile_path} alt={item.character} />
+                  <Poster path={item.profile_path} alt={item.name} />
                 )}
                 <div className="flex flex-col mt-3">
-                  <h3 className="text-white">{item.character}</h3>
+                  <h3 className="text-white">{item.name}</h3>
                   <span className="text-zinc-400 text-sm">
-                    {item.known_for_department}
+                    {item.character}
                   </span>
                 </div>
               </Link>
