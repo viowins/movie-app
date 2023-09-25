@@ -1,9 +1,11 @@
 'use client'
 import React from 'react'
-import { Swiper, SwiperSlide  } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import '@/styles/swiper.css'
+import 'swiper/css/navigation';
 import { Card } from '@/components'
+import { Navigation } from 'swiper/modules';
 
 export default function SwiperSection({title, movies = {}, index}) {
 
@@ -12,7 +14,7 @@ export default function SwiperSection({title, movies = {}, index}) {
       <h2 className="text-xl font-semibold">{title}</h2>
 
       <div className='min-w-full'>
-        <Swiper spaceBetween={24}
+        <Swiper navigation={true} modules={[Navigation]} spaceBetween={24}
         breakpoints={{
           0: {
             slidesPerView: 1,

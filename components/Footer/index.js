@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <footer className='flex flex-col gap-3 mt-6 md:mt-8 text-center'>
+    <footer className='flex flex-col gap-3 mt-20 md:mt-28 mb-10 md:mb-12 text-center'>
       <div className='text-zinc-500'>
         Made by <Link className='text-white hover:underline' href='https://github.com/viowins/' target='_blank'>Emre Yaraşır</Link>
       </div>
