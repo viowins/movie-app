@@ -17,9 +17,6 @@ export default function Card({ title, movie = {}, ...props }) {
   } = movie;
   const [showCardBody, setShowCardBody] = useState(false);
 
-  const movieName =
-    media_type == "movie" ? movie.original_title : movie.original_name;
-
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
@@ -32,7 +29,7 @@ export default function Card({ title, movie = {}, ...props }) {
         className="object-cover aspect-poster rounded-lg transition-all duration-200 delay-200 group-hover:rounded-b-none"
         to={`${media_type}/${id}`}
         path={movie.poster_path}
-        alt={movieName}
+        alt={media_type == "movie" ? movie.original_title : movie.original_name}
       />
 
       <div
@@ -49,7 +46,7 @@ export default function Card({ title, movie = {}, ...props }) {
                   className="text-lg font-semibold mb-2"
                   href={`/${movie.media_type}/${movie.id}`}
                 >
-                  {movieName}
+                  {media_type == "movie" ? movie.original_title : movie.original_name}
                 </Link>
               </div>
               <Button

@@ -11,3 +11,8 @@
 .swiper-slide {
   @apply !overflow-visible
 }
+
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after,
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+  @apply !text-white !text-3xl
+}

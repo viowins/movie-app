@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "@/styles/swiper.css";
 import Link from "next/link";
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 
 export default function Casts({ casts }) {
   return (
@@ -13,6 +15,7 @@ export default function Casts({ casts }) {
 
       <div className="min-w-full">
         <Swiper
+          navigation={true} modules={[Navigation]}
           spaceBetween={24}
           breakpoints={{
             0: {
