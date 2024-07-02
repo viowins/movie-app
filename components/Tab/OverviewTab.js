@@ -154,7 +154,7 @@ OverviewTab.Tv = function ({ tv = {} }) {
     },
     {
       label: "Director",
-      value: tv.created_by[0].name ? tv.created_by[0].name : '',
+      value: tv.created_by[0] ? tv.created_by[0].name : "Unknown",
     },
     {
       label: "Seasons",

@@ -1,6 +1,6 @@
 const langEnQuery = "language=en-US";
 
-const fetchMediaApi = async (pathname, query = "") => {
+export const fetchMediaApi = async (pathname, query = "") => {
   const options = {
     method: "GET",
     headers: {
@@ -17,17 +17,21 @@ const fetchMediaApi = async (pathname, query = "") => {
   return res.json();
 };
 
-const getTrendings = async () => {
-  return fetchMediaApi("/trending/all/week", "language=en-US");
+export const getTrendings = async (query) => {
+  return fetchMediaApi("/trending/all/week", `language=en-US${query}`);
 };
 
-const getHeroMovie = async (media_type, id) => {
+export const getTrendingMovies = async (query) => {
+  return fetchMediaApi("/trending/movie/week", `language=en-US${query}`);
+};
+
+export const getHeroMovie = async (media_type, id) => {
   const path = `/${media_type}/${id}`;
 
   return fetchMediaApi(path, langEnQuery);
 };
 
-const getMediaDetail = async (params) => {
+export const getMediaDetail = async (params) => {
   const path = `/${params.slug}/${params.id}`;
 
   const [
@@ -88,65 +92,59 @@ const getMediaDetail = async (params) => {
   }
 };
 
-const getMeidaVideos = async (media_type, id) => {
+export const getMeidaVideos = async (media_type, id) => {
   const path = `/${media_type}/${id}/videos`;
 
   return fetchMediaApi(path, langEnQuery);
 };
 
-const getMediaPhotos = async (media_type, id) => {
+export const getMediaPhotos = async (media_type, id) => {
   const path = `/${media_type}/${id}/images`;
 
   return fetchMediaApi(path);
 };
 
-const getMediaRelaseDate = async (media_type, id) => {
+export const getMediaRelaseDate = async (media_type, id) => {
   const path = `/${media_type}/${id}/release_dates`;
   return fetchMediaApi(path, langEnQuery);
 };
 
-const getMediaDirector = async (media_type, id) => {
+export const getMediaDirector = async (media_type, id) => {
   const path = `/${media_type}/${id}/credits`;
   return fetchMediaApi(path, langEnQuery);
 };
 
-const getExternalIDs = async (media_type, id) => {
+export const getExternalIDs = async (media_type, id) => {
   const path = `/${media_type}/${id}/external_ids`;
   return fetchMediaApi(path);
 };
 
-const getPerson = async (id) => {
+export const getPerson = async (id) => {
   const path = `/person/${id}`;
   return fetchMediaApi(path, langEnQuery);
 };
 
-const getPersonImages = async (id) => {
+export const getPersonImages = async (id) => {
   const path = `/person/${id}/images`;
   return fetchMediaApi(path);
 };
 
-const getPersonMedias = async (id) => {
+export const getPersonMedias = async (id) => {
   const path = `/person/${id}/combined_credits`;
   return fetchMediaApi(path, langEnQuery);
 };
 
-const getMediaRecommendations = async (media_type, id) => {
+export const getMediaRecommendations = async (media_type, id) => {
   const path = `/${media_type}/${id}/recommendations`;
   return fetchMediaApi(path, `${langEnQuery}&page=1`);
 };
 
-export {
-  fetchMediaApi,
-  getTrendings,
-  getHeroMovie,
-  getMediaDetail,
-  getMeidaVideos,
-  getMediaRelaseDate,
-  getMediaDirector,
-  getMediaPhotos,
-  getExternalIDs,
-  getPerson,
-  getPersonImages,
-  getPersonMedias,
-  getMediaRecommendations,
-};
+export const getMedias = async (media_type) => {
+  const path = `/${media_type}/popular`
+  return fetchMediaApi(path, `${langEnQuery}&page=1`)
+}
+
+export const getMoreMedia = async (media_type, page) => {
+  const path = `${media_type}/popular`
+  return fetchMediaApi(path, `${langEnQuery}&page=${page}`)
+}
