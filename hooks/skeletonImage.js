@@ -21,7 +21,7 @@ function SkeletonImage({ path, alt, ...props }) {
       )}
       <div
         className={cn(
-          "transition-all duration-150 z-10",
+          "relative transition-all duration-150 z-10 h-full",
           loaded ? "opacity-100 visible" : "opacity-0 invisible"
         )}
       >

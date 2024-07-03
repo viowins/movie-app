@@ -27,7 +27,7 @@ export default function Card({ title, movie = {}, ...props }) {
     >
       <Poster
         className="object-cover aspect-poster rounded-lg transition-all duration-200 delay-200 group-hover:rounded-b-none"
-        to={`${media_type}/${id}`}
+        to={`/${media_type}/${id}`}
         path={movie.poster_path}
         alt={media_type == "movie" ? movie.original_title : movie.original_name}
       />
@@ -44,7 +44,7 @@ export default function Card({ title, movie = {}, ...props }) {
               <div className="flex items-center gap-3">
                 <Link
                   className="text-lg font-semibold mb-2"
-                  href={`/${movie.media_type}/${movie.id}`}
+                  href={`/${media_type}/${id}`}
                 >
                   {media_type == "movie" ? movie.original_title : movie.original_name}
                 </Link>
