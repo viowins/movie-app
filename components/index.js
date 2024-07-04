@@ -17,6 +17,7 @@ import Footer from './Footer';
 import Casts from "./Casts";
 import PersonDetail from "./PersonDetail";
 import GridSection from "./GridSection";
+import AddFavoriteBtn from "./AddFavoriteBtn";
 
 export {
   Sidebar,
@@ -38,4 +39,5 @@ export {
   PersonDetail,
   GridSection,
   SkeletonSwiper,
+  AddFavoriteBtn,
 };

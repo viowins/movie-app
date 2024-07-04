@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Icon, Button, Poster } from "@/components";
+import { AddFavoriteBtn, Poster } from "@/components";
 import { motion } from "framer-motion";
 import cn from "classnames";
 import Link from "next/link";
@@ -8,12 +8,7 @@ import Link from "next/link";
 export default function Card({ title, movie = {}, ...props }) {
   const {
     id,
-    media_type,
-    poster_path,
-    original_title,
-    original_name,
-    overview,
-    adult,
+    media_type
   } = movie;
   const [showCardBody, setShowCardBody] = useState(false);  
 
@@ -50,13 +45,7 @@ export default function Card({ title, movie = {}, ...props }) {
                   {media_type == "movie" ? movie.original_title : movie.original_name}
                 </Link>
               </div>
-              <Button
-                variant="contained"
-                color="blueHover"
-                width="square"
-                rounded="full"
-                startIcon={<Icon name="BookmarkOutline" />}
-              />
+              <AddFavoriteBtn data={movie} />
             </div>
 
             <div className="flex items-center gap-2 mb-2">

@@ -8,16 +8,32 @@
   @apply bg-zinc-600 text-zinc-200 hover:text-white hover:bg-zinc-700
 }
 
+.btn.secondary.contained.selected {
+  @apply !bg-zinc-700 !text-white
+}
+
 .btn.whiteHover.contained {
   @apply hover:bg-white hover:text-zinc-900
+}
+
+.btn.whiteHover.contained.selected {
+  @apply !bg-white !text-zinc-900
 }
 
 .btn.blueHover.contained {
   @apply hover:text-blue-600 hover:bg-blue-950/50
 }
 
+.btn.blueHover.contained.selected {
+  @apply !text-blue-600 !bg-blue-950/50
+}
+
 .btn.blue.contained {
   @apply text-blue-600 bg-blue-950/50 hover:bg-blue-950/70
+}
+
+.btn.blue.contained.selected {
+  @apply !text-blue-600 !bg-blue-950/70
 }
 
 /* end:Colors */

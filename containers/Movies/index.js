@@ -11,12 +11,12 @@ export default function MoviesContainer() {
   useEffect(() => {
     const fetchInitialTrendings = async () => {
       let initialTrendings = [];
-      for (let i = 0; i < 5; i++) {  // Döngüyü 0'dan 4'e kadar (5 kez) çalıştır
+      for (let i = 0; i < 5; i++) {
         const result = await getTrendingMovies(`&page=${page + i}`);
         initialTrendings = [...initialTrendings, { data: result.results, page: page + i }];
       }
       setTrendings(initialTrendings);
-      setPage(prev => prev + 5);  // Sayfa numarasını 5 artır
+      setPage(prev => prev + 5);
     };
     fetchInitialTrendings();
   }, []);

@@ -21,10 +21,10 @@ export default function Navigation() {
       target: 'series'
     },
     {
-      name: 'Favourites',
+      name: 'Favorites',
       icon: 'BookmarkOutline',
-      path: '/favourites',
-      target: 'favourites'
+      path: '/favorites',
+      target: 'favorites'
     },
     {
       name: 'Search',
