@@ -12,6 +12,7 @@ import Tab from "./Tab";
 import MediaCard from "./MediaCard";
 import TrailerWatch from "./TrailerWatch";
 import Skeleton from "./Skeleton/Skeleton";
+import SkeletonSwiper from "./Skeleton/SkeletonSwiper";
 import Footer from './Footer';
 import Casts from "./Casts";
 import PersonDetail from "./PersonDetail";
@@ -36,4 +37,5 @@ export {
   Casts,
   PersonDetail,
   GridSection,
+  SkeletonSwiper,
 };

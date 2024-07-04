@@ -14,7 +14,7 @@ export default function SwiperSection({title, movies = {}, index}) {
       <h2 className="text-xl font-semibold">{title}</h2>
 
       <div className='min-w-full'>
-        <Swiper navigation={true} modules={[Navigation]} spaceBetween={24}
+        <Swiper navigation={true} modules={[Navigation]} slidesPerView={6} spaceBetween={24}
         breakpoints={{
           0: {
             slidesPerView: 1,

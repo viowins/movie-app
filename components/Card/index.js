@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Icon, Button, Poster } from "@/components";
 import { motion } from "framer-motion";
 import cn from "classnames";
@@ -15,12 +15,7 @@ export default function Card({ title, movie = {}, ...props }) {
     overview,
     adult,
   } = movie;
-  const [showCardBody, setShowCardBody] = useState(false);
-
-  useEffect(() => {
-    console.log(showCardBody)
-  }, [showCardBody])
-  
+  const [showCardBody, setShowCardBody] = useState(false);  
 
   return (
     <motion.div

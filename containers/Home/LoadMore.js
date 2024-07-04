@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react'
-import { SwiperSection } from '@/components'
+import { SwiperSection, SkeletonSwiper } from '@/components'
 import { getTrendings } from '@/services/movie'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
@@ -28,7 +28,7 @@ export default function LoadMoreHome() {
       dataLength={trendings.length}
       next={fetchMoreData}
       hasMore={true}
-      loader={<h4>Loading...</h4>}
+      loader={<SkeletonSwiper />}
       endMessage={
         <p style={{ textAlign: 'center' }}>
           <b>Yay! You have seen it all</b>
