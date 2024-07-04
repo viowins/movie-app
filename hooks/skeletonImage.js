@@ -9,7 +9,7 @@ function useSkeletonImage() {
   return { loaded, setLoaded };
 }
 
-function SkeletonImage({ path, alt, ...props }) {
+function SkeletonImage({ path, alt, quality, ...props }) {
   const { loaded, setLoaded } = useSkeletonImage();
 
   return (

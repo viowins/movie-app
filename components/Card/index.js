@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Icon, Button, Poster } from "@/components";
 import { motion } from "framer-motion";
 import cn from "classnames";
@@ -17,12 +17,18 @@ export default function Card({ title, movie = {}, ...props }) {
   } = movie;
   const [showCardBody, setShowCardBody] = useState(false);
 
+  useEffect(() => {
+    console.log(showCardBody)
+  }, [showCardBody])
+  
+
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
       className="group relative transition-all duration-200 hover:shadow-2xl hover:z-[999]"
       onMouseEnter={() => setShowCardBody(true)}
       onMouseLeave={() => setShowCardBody(false)}
+      onClick={() => setShowCardBody(showCardBody => !showCardBody)}
       {...props}
     >
       <Poster
@@ -34,7 +40,7 @@ export default function Card({ title, movie = {}, ...props }) {
 
       <div
         className={cn(
-          "absolute top-full grid transition-all duration-150 delay-200",
+          "relative md:absolute top-full grid transition-all duration-150 delay-200",
           showCardBody ? "grid-rows-1fr" : "grid-rows-0fr"
         )}
       >

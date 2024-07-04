@@ -16,7 +16,7 @@ export default async function HomeContainer({ trendings = [] }) {
     <>
       <HeroSection movie={heroMovie} mediaType={trendings[0].media_type} id={trendings[0].id} isLinked={true} video={trailer} />
       <SwiperSection title='Trendings' movies={trendings.slice(1, 20)} index={500} />
-      <SwiperSection  movies={trendings2} index={500} />
+      <SwiperSection  movies={trendings2} index={499} />
       <LoadMore />
     </>
   )

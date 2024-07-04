@@ -29,6 +29,7 @@ export default function MediaCard({ mediaType, media = {}, bordered, aspect }) {
             loading="lazy"
             alt={mediaType == "photo" ? media.file_path : media.name}
             fill={true}
+            quality={50}
           />
           {mediaType == "video" && (
               <button
