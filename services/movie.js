@@ -25,6 +25,10 @@ export const getTrendingMovies = async (query) => {
   return fetchMediaApi("/trending/movie/week", `language=en-US${query}`);
 };
 
+export const getTrendingSeries = async (query) => {
+  return fetchMediaApi("/trending/tv/week", `language=en-US${query}`);
+};
+
 export const getHeroMovie = async (media_type, id) => {
   const path = `/${media_type}/${id}`;
 
