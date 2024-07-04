@@ -46,7 +46,7 @@
 
 .btn.square,
 .btn.square.base {
-  @apply w-8 h-8 justify-center !p-0
+  @apply w-10 h-10 justify-center !p-0
 }
 
 .btn.sm {

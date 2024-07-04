@@ -33,7 +33,7 @@ export default function OverviewTab({ media, children, externalIDs }) {
         <div className="flex items-center flex-wrap gap-2 mt-6">
           {Object.keys(externalIDs).map((item, key) => (
             <React.Fragment key={key}>
-              {item != "id" && externalIDs[item] != null && (
+              {item != "id" && externalIDs[item] != null && externalIDs[item] != "" && (
                 <Button
                   href={`${useSocialLink(item)}${externalIDs[item]}`}
                   variant="contained"
