@@ -30,6 +30,9 @@ module.exports = {
         'col-2': `calc(calc((( 100vw - 2 * 72px - ( 5 - 1 ) * 24px ) / 2 ) / 0.66667) * 0.66667)`,
         'col-1': `calc(calc((( 100vw - 2 * 72px - ( 5 - 1 ) * 24px ) / 1 ) / 0.66667) * 0.66667)`,
       },
+      boxShadow: {
+        "glow": "0px 0px 20px -1px rgba(59, 130, 246,0.3)"
+      }
     },
   },
   plugins: [],

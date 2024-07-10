@@ -4,6 +4,7 @@ import { getTrendings, getHeroMovie, getMeidaVideos } from '@/services/movie'
 import LoadMore from './LoadMore'
 
 export default async function HomeContainer({ trendings = [] }) {
+  console.log(trendings[0])
   const [heroMovie, { results: heroVideo }, { results: trendings2 }] = await Promise.all([
     getHeroMovie(trendings[0].media_type, trendings[0].id),
     getMeidaVideos(trendings[0].media_type, trendings[0].id),

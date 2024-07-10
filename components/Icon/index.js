@@ -1,4 +1,4 @@
-import { BiHome, BiMovie, BiTv, BiBookmark, BiSearchAlt, BiPlay, BiPlus, BiLogoImdb, BiLogoWikipedia, BiLogoFacebook, BiLogoInstagramAlt, BiLogoTwitter, BiLink } from 'react-icons/bi'
+import { BiHome, BiMovie, BiTv, BiSearch, BiBookmark, BiSearchAlt, BiPlay, BiPlus, BiLogoImdb, BiLogoWikipedia, BiLogoFacebook, BiLogoInstagramAlt, BiLogoTwitter, BiLink } from 'react-icons/bi'
 import { BsChevronRight, BsChevronLeft, BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs'
 import { CgClose } from 'react-icons/cg'
 
@@ -27,7 +27,7 @@ export default function Icon({ size, name, ...props }) {
           {name === "twitter" && <BiLogoTwitter size={size ? size : '24'} {...props} />}
           {name === "link" && <BiLink size={size ? size : '24'} {...props} />}
           {name === "tvdb" && <BiLink size={size ? size : '24'} {...props} />}
-          
+          {name === "search" && <BiSearch size={size ? size : '24'} {...props} />}
         </>
       )}
     </>

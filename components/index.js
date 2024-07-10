@@ -18,6 +18,7 @@ import Casts from "./Casts";
 import PersonDetail from "./PersonDetail";
 import GridSection from "./GridSection";
 import AddFavoriteBtn from "./AddFavoriteBtn";
+import SearchInput from "./SearchInput";
 
 export {
   Sidebar,
@@ -40,4 +41,5 @@ export {
   GridSection,
   SkeletonSwiper,
   AddFavoriteBtn,
+  SearchInput,
 };

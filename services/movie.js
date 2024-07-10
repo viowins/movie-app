@@ -1,6 +1,7 @@
 const langEnQuery = "language=en-US";
 
 export const fetchMediaApi = async (pathname, query = "") => {
+  console.log(`${process.env.MOVIE_DB_URL}${pathname}?${query}`)
   const options = {
     method: "GET",
     headers: {
@@ -17,7 +18,7 @@ export const fetchMediaApi = async (pathname, query = "") => {
   return res.json();
 };
 
-export const getTrendings = async (query) => {
+export const getTrendings = async (query = "") => {
   return fetchMediaApi("/trending/all/week", `language=en-US${query}`);
 };
 
@@ -27,6 +28,10 @@ export const getTrendingMovies = async (query) => {
 
 export const getTrendingSeries = async (query) => {
   return fetchMediaApi("/trending/tv/week", `language=en-US${query}`);
+};
+
+export const getSearchData = async (query) => {
+  return fetchMediaApi("/search/keyword", `${query ? query : ""}`);
 };
 
 export const getHeroMovie = async (media_type, id) => {

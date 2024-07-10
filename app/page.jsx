@@ -11,6 +11,8 @@ export default async function Home() {
 
   const { results: trendings } = await getTrendings();
 
+  console.log(trendings)
+
 
   return <HomeContainer trendings={trendings} />
 }
