@@ -29,6 +29,7 @@ function SkeletonImage({ path, alt, quality, ...props }) {
           src={path}
           alt={alt}
           onLoad={() => setLoaded(true)}
+          quality={quality ? quality : 50}
           {...props}
         />
       </div>

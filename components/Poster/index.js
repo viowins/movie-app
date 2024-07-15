@@ -4,7 +4,6 @@ import cn from 'classnames';
 import { SkeletonImage } from "@/hooks/skeletonImage";
 
 export default function Backdrop({ path, to, alt, aspect, ...props }) {
-
   return (
     <>
       {to ? (

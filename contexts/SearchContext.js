@@ -8,65 +8,63 @@ const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [value, setValue] = useState("");
   const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
     if (!value && value == "") return;
-    const fetchInitialData = async () => {
-      let initialData = [];
+    const fetchInitialSearch = async () => {
+      let initialSearch = [];
       for (let i = 0; i < 5; i++) {
         const result = await getSearchData(`query=${value}&page=${page + i}`);
-        initialData = [
-          ...initialData,
-          { data: result.results, page: page + i },
-        ];
+        initialSearch = [...initialSearch, { data: result.results, page: page + i }];
+        setTotalPages(result.total_pages)
       }
-      setSearchData(initialData);
-      setPage((prev) => prev + 5);
+      setSearchData(initialSearch);
+      setPage(prev => prev + 5);
     };
-    fetchInitialData();
+    fetchInitialSearch();
   }, [value]);
 
   const fetchMoreData = async () => {
-    const newData = await getSearchData(`query=${value}page=${page}`);
-    setSearchData((prev) => [...prev, { data: newData.results, page }]);
-    setPage((prev) => prev + 1);
-  };
-
-  /*useEffect(() => {
-    if (!value && value == "") return;
-    getSearchData(`query=${value}&page=1`).then((data) => setSearchData(data));
-  }, [value]);*/
+    if (totalPages == page) return;
+    const newSearch = await getSearchData(`query=${value}&page=${page + 1}`);
+    console.log(newSearch)
+    setSearchData(prev => [...prev, { data: newSearch.newSearch, page }]);
+    setPage(prev => prev + 1);
+  }
 
   useEffect(() => {
     console.log(searchData)
-  }, [searchData])
+  }, [searchData, value])
+  
 
   return (
-    <SearchContext.Provider value={{ value, setValue, searchData }}>
+    <SearchContext.Provider value={{ value, setValue, searchData, setPage, setSearchData }}>
       {children}
-      <InfiniteScroll
-        dataLength={searchData.length}
-        next={fetchMoreData}
-        hasMore={true}
-        loader={<SkeletonSwiper />}
-        endMessage={
-          <p style={{ textAlign: "center" }}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
-        style={{ overflow: "unset" }}
-      >
-        {searchData.map((search, index) => (
-          <SwiperSection
-            key={index}
-            movies={search.data}
-            index={1000 - search.page}
-            title={index == 0 && `Search for ${value}`}
-          />
-        ))}
-      </InfiniteScroll>
+      {searchData.length > 0 ? (
+        <div className="mt-8">
+          <InfiniteScroll
+            dataLength={searchData.length}
+            next={fetchMoreData}
+            hasMore={totalPages != page}
+            loader={<SkeletonSwiper />}
+            endMessage={
+              <p style={{ textAlign: 'center' }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+            style={{ overflow: 'unset' }}
+          >
+            {searchData.map((search, index) => (
+              <SwiperSection key={index} movies={search.data} index={1000 - search.page} />
+            ))}
+          </InfiniteScroll>
+        </div>
+      ) : (
+        <div className="text-center mt-16">Search</div>
+      )}
     </SearchContext.Provider>
   );
 };

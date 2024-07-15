@@ -1,7 +1,6 @@
 const langEnQuery = "language=en-US";
 
 export const fetchMediaApi = async (pathname, query = "") => {
-  console.log(`${process.env.MOVIE_DB_URL}${pathname}?${query}`)
   const options = {
     method: "GET",
     headers: {
@@ -31,7 +30,7 @@ export const getTrendingSeries = async (query) => {
 };
 
 export const getSearchData = async (query) => {
-  return fetchMediaApi("/search/keyword", `${query ? query : ""}`);
+  return fetchMediaApi("/search/multi", `${query ? query : ""}`);
 };
 
 export const getHeroMovie = async (media_type, id) => {
